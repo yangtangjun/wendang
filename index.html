@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="your keywords">
+    <meta name="description" content="your description">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <meta name="format-detection" content="telephone=no">
+    <title>中文文档</title>
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="static/font/iconfont.css">
+</head>
+<body>
+<!--劳动成果-->
+<div class="labor">
+    <div class="after"></div>
+    <div class="iconfont icon-jinggao"></div>
+    <div class="each">请尊重劳动成果！！！</div>
+    <div class="pushButton">
+        <div class="grid__item theme-9">
+            <button class="action"><svg class="icon icon--rewind"><use xlink:href="#icon-rewind"></use></svg></button>
+            <button class="particles-button">确定</button>
+        </div>
+    </div>
+</div>
+<div class="login">
+    <video class="background" src="static/video/1.mp4" autoplay muted="muted" loop="true" poster="static/images/images.png"></video>
+    <div class="warp">
+        <div class="center">
+            <div class="images">
+                <img src="static/images/images.png" alt="">
+            </div>
+            <input class="name" type="text" placeholder="请输入用户名">
+            <input class="password" type="password" placeholder="请输入密码">
+            <button>登录</button>
+        </div>
+    </div>
+    <div class="alert">
+        <div class="item item_1">账号和密码不能为空!</div>
+        <div class="item item_2">用户不存在!</div>
+        <div class="item item_3">请输入密码!</div>
+        <div class="item item_4">用户密码不匹配!</div>
+        <div class="item item_5">登录成功!</div>
+    </div>
+
+</div>
+</body>
+<script src="static/js/jquery.js"></script>
+<script src="static/js/common.js"></script>
+<script>
+    $('.login input').focus(function () {
+        $(this).addClass('input_active')
+    })
+    $('.login input').blur(function () {
+        $(this).removeClass('input_active')
+    })
+
+    if (!sessionStorage.getItem('testKey')) {
+        $('.login .warp .center button').click(function () {
+            if ($('.name').val()==''){
+                $('.login .alert .item_1').addClass('active')
+                setTimeout(()=>{
+                    $('.login .alert .item_1').removeClass('active')
+                },1500)
+                $('.name').focus()
+                return;
+            }
+            if ($('.name').val()!='俊仔'){
+                $('.login .alert .item_2').addClass('active')
+                setTimeout(()=>{
+                    $('.login .alert .item_2').removeClass('active')
+                },1500)
+                $('.name').focus()
+                return;
+            }
+            if ($('.password').val()==''){
+                $('.login .alert .item_3').addClass('active')
+                setTimeout(()=>{
+                    $('.login .alert .item_3').removeClass('active')
+                },1500)
+                $('.password').focus()
+                return;
+            }
+            if ($('.password').val()!='123456'){
+                $('.login .alert .item_4').addClass('active')
+                setTimeout(()=>{
+                    $('.login .alert .item_4').removeClass('active')
+                },1500)
+                $('.password').focus()
+            }
+            if ($('.name').val()=='俊仔' && $('.password').val()=='123456') {
+                $('.login .alert .item_5').addClass('active')
+                setTimeout(()=>{
+                    $('.login .alert .item_5').removeClass('active')
+                    window.location.href = "./home.html";
+                },1500)
+                $('.password').focus()
+            }
+        })
+    }else{
+        window.location.href = "./home.html";
+    }
+    sessionStorage.setItem('testKey','这是一个测试的value值');
+</script>
+<script src="static/js/jquery.js"></script>
+<script src='static/js/particle.js'></script>
+<script src='static/js/copy.js'></script>
+<script src="static/js/common.js"></script>
+</html>
